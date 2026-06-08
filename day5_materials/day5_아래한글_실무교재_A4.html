@@ -1,0 +1,532 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>5일차 아래한글 실무 교재</title>
+  <style>
+    @page { size: A4; margin: 14mm; }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: #dfe4ea;
+      color: #111827;
+      font-family: "Malgun Gothic", Arial, sans-serif;
+      line-height: 1.55;
+      font-size: 16px;
+    }
+    .book {
+      width: 210mm;
+      margin: 0 auto;
+      padding: 12px 0;
+    }
+    .sheet {
+      width: 210mm;
+      min-height: 297mm;
+      background: #fff;
+      margin: 0 auto 14px;
+      padding: 16mm;
+      position: relative;
+      box-shadow: 0 3px 18px rgba(15, 23, 42, .18);
+      page-break-after: always;
+    }
+    .sheet:last-child { page-break-after: auto; }
+    .page-no {
+      position: absolute;
+      right: 16mm;
+      bottom: 9mm;
+      color: #64748b;
+      font-size: 12px;
+    }
+    h1, h2, h3 { line-height: 1.25; margin: 0; }
+    h1 { font-size: 34px; margin-bottom: 14px; }
+    h2 {
+      font-size: 26px;
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 3px solid #111827;
+    }
+    h3 { font-size: 20px; margin: 16px 0 8px; }
+    p { margin: 7px 0; }
+    .cover-title {
+      margin-top: 38mm;
+      text-align: center;
+    }
+    .cover-title h1 {
+      font-size: 42px;
+      margin-bottom: 12px;
+    }
+    .cover-box {
+      margin: 22mm auto 0;
+      border: 3px solid #111827;
+      padding: 18px;
+      width: 82%;
+      font-size: 20px;
+      font-weight: 800;
+    }
+    .unit {
+      display: inline-block;
+      background: #111827;
+      color: #fff;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-weight: 900;
+      margin-bottom: 12px;
+    }
+    .goal {
+      border: 2px solid #2563eb;
+      background: #eaf2ff;
+      padding: 12px;
+      border-radius: 8px;
+      font-size: 18px;
+      font-weight: 900;
+      margin: 12px 0;
+    }
+    .grid {
+      display: grid;
+      gap: 10px;
+    }
+    .grid.two { grid-template-columns: 1fr 1fr; }
+    .grid.three { grid-template-columns: repeat(3, 1fr); }
+    .box {
+      border: 2px solid #cbd5e1;
+      border-radius: 8px;
+      padding: 12px;
+      background: #f8fafc;
+    }
+    .box b {
+      display: block;
+      font-size: 17px;
+      margin-bottom: 4px;
+    }
+    .do {
+      border: 2px solid #111827;
+      border-radius: 8px;
+      overflow: hidden;
+      margin: 12px 0;
+    }
+    .do-title {
+      background: #111827;
+      color: #fff;
+      padding: 8px 12px;
+      font-size: 18px;
+      font-weight: 900;
+    }
+    .do-body { padding: 12px; }
+    .row {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      border-top: 1px solid #d1d5db;
+      padding: 8px 0;
+      gap: 10px;
+    }
+    .row:first-child { border-top: 0; }
+    .label {
+      color: #1d4ed8;
+      font-weight: 900;
+    }
+    .btn {
+      display: inline-block;
+      background: #111827;
+      color: #fff;
+      border-radius: 5px;
+      padding: 2px 8px;
+      font-weight: 900;
+      margin: 1px;
+    }
+    .key {
+      display: inline-block;
+      border: 1px solid #94a3b8;
+      border-bottom-width: 3px;
+      border-radius: 5px;
+      padding: 1px 7px;
+      font-family: Consolas, monospace;
+      font-weight: 900;
+      background: #fff;
+    }
+    .copy {
+      white-space: pre-wrap;
+      border: 2px solid #94a3b8;
+      background: #f8fafc;
+      border-radius: 8px;
+      padding: 10px;
+      margin: 8px 0;
+      font-size: 15px;
+    }
+    .ok {
+      background: #ecfdf5;
+      border-left: 8px solid #16a34a;
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-weight: 900;
+    }
+    .warn {
+      background: #fff7ed;
+      border-left: 8px solid #f97316;
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-weight: 900;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 8px 0;
+      font-size: 14px;
+    }
+    th, td {
+      border: 1.5px solid #111827;
+      padding: 6px;
+      text-align: left;
+    }
+    th { background: #e5e7eb; }
+    .mini-ui {
+      border: 2px solid #111827;
+      border-radius: 8px;
+      overflow: hidden;
+      margin: 10px 0;
+    }
+    .bar {
+      background: #e5e7eb;
+      border-bottom: 2px solid #111827;
+      padding: 7px;
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .tool {
+      border: 1px solid #94a3b8;
+      background: #fff;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-weight: 800;
+      font-size: 13px;
+    }
+    .paper {
+      padding: 12px;
+      min-height: 105px;
+      background: #fff;
+    }
+    .center { text-align: center; }
+    .big { font-size: 22px; font-weight: 900; }
+    .muted { color: #64748b; }
+    .check li { margin: 6px 0; font-weight: 800; }
+    .answer-line {
+      display: block;
+      height: 32px;
+      border-bottom: 1.5px solid #94a3b8;
+      margin: 5px 0;
+    }
+    @media print {
+      body { background: #fff; }
+      .book { padding: 0; width: auto; }
+      .sheet {
+        margin: 0;
+        box-shadow: none;
+        width: auto;
+        min-height: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="book">
+    <section class="sheet">
+      <div class="cover-title">
+        <div class="unit">컴퓨터 기초 5일차</div>
+        <h1>아래한글 실무 교재</h1>
+        <p class="big">업무 보고서를 만들면서 자주 쓰는 기능 배우기</p>
+      </div>
+      <div class="cover-box">
+        오늘 배우는 기능<br>
+        1. 새 문서와 저장<br>
+        2. 글자 입력과 수정<br>
+        3. 글자 모양<br>
+        4. 문단 모양<br>
+        5. 복사/붙여넣기<br>
+        6. 표 만들기<br>
+        7. 보고서 완성
+      </div>
+      <p class="page-no">1</p>
+    </section>
+
+    <section class="sheet">
+      <span class="unit">목차</span>
+      <h2>오늘 수업에서 할 일</h2>
+      <div class="goal">목표: 아래한글에서 회사 문서 하나를 처음부터 끝까지 만들 수 있게 된다.</div>
+      <table>
+        <tr><th>쪽</th><th>단원</th><th>배우는 기능</th><th>연습 결과</th></tr>
+        <tr><td>3</td><td>새 문서와 저장</td><td>새 문서, 저장, 파일명</td><td>빈 파일 저장</td></tr>
+        <tr><td>4</td><td>글자 입력과 수정</td><td>입력, Enter, Backspace, Delete</td><td>기본 문장 입력</td></tr>
+        <tr><td>5</td><td>글자 모양</td><td>크기, 굵게, 밑줄</td><td>제목 꾸미기</td></tr>
+        <tr><td>6</td><td>문단 모양</td><td>가운데 정렬, 왼쪽 정렬, 줄 간격</td><td>제목/본문 정렬</td></tr>
+        <tr><td>7</td><td>복사와 붙여넣기</td><td>Ctrl+C, Ctrl+V, Ctrl+Z</td><td>본문 빠르게 입력</td></tr>
+        <tr><td>8</td><td>표 만들기</td><td>표 삽입, 칸 이동, 첫 줄 꾸미기</td><td>진행 현황 표</td></tr>
+        <tr><td>9</td><td>보고서 완성</td><td>배운 기능 합치기</td><td>주간 업무 보고서</td></tr>
+        <tr><td>10</td><td>반복 실습</td><td>같은 기능 반복</td><td>보고서 3개</td></tr>
+      </table>
+      <div class="warn">시험 문제가 아니라, 실제 문서를 만들기 위한 기능만 연습합니다.</div>
+      <p class="page-no">2</p>
+    </section>
+
+    <section class="sheet">
+      <span class="unit">1단원</span>
+      <h2>새 문서와 저장</h2>
+      <div class="goal">배울 기능: 새 문서 만들기, 저장하기, 파일 이름 정하기</div>
+      <div class="grid two">
+        <div class="box"><b>왜 배우나</b>문서를 아무리 잘 만들어도 저장하지 않으면 다시 쓸 수 없습니다.</div>
+        <div class="box"><b>회사에서 쓰는 곳</b>보고서, 회의록, 안내문, 신청서 저장</div>
+      </div>
+      <div class="do">
+        <div class="do-title">따라하기 1: 새 문서 만들기</div>
+        <div class="do-body">
+          <div class="row"><div class="label">작업</div><div>아래한글을 실행하고 빈 문서를 엽니다.</div></div>
+          <div class="row"><div class="label">누르기</div><div><span class="btn">한글 실행</span> → <span class="btn">새 문서</span></div></div>
+          <div class="row"><div class="label">확인</div><div class="ok">흰 종이가 보이면 성공</div></div>
+        </div>
+      </div>
+      <div class="do">
+        <div class="do-title">따라하기 2: 먼저 저장하기</div>
+        <div class="do-body">
+          <div class="row"><div class="label">누르기</div><div><span class="key">Ctrl</span> + <span class="key">S</span></div></div>
+          <div class="row"><div class="label">파일명</div><div><div class="copy">5일차_내이름_연습문서.hwpx</div></div></div>
+          <div class="row"><div class="label">확인</div><div class="ok">폴더에 파일이 생기면 성공</div></div>
+        </div>
+      </div>
+      <h3>연습 문제</h3>
+      <ul class="check">
+        <li>□ 새 문서를 만든다.</li>
+        <li>□ 내 이름이 들어간 파일명으로 저장한다.</li>
+        <li>□ 저장한 파일을 닫고 다시 연다.</li>
+      </ul>
+      <p class="page-no">3</p>
+    </section>
+
+    <section class="sheet">
+      <span class="unit">2단원</span>
+      <h2>글자 입력과 수정</h2>
+      <div class="goal">배울 기능: 글자 입력, 줄 바꿈, 지우기, 실행 취소</div>
+      <div class="mini-ui">
+        <div class="bar"><span class="tool">커서</span><span class="tool">입력</span><span class="tool">Enter</span><span class="tool">Backspace</span><span class="tool">Delete</span></div>
+        <div class="paper">
+          <p>커서가 깜빡이는 곳에 글자가 들어갑니다.</p>
+          <p>줄을 바꾸려면 Enter를 누릅니다.</p>
+        </div>
+      </div>
+      <div class="do">
+        <div class="do-title">따라하기: 작성 정보 입력</div>
+        <div class="do-body">
+          <div class="row"><div class="label">입력</div><div><div class="copy">주간 업무 보고서
+
+작성자: 홍길동
+부서: 운영팀
+작성일: 2026.06.12
+보고 기간: 2026.06.08 - 2026.06.12</div></div></div>
+          <div class="row"><div class="label">수정</div><div>홍길동을 본인 이름으로 바꿉니다.</div></div>
+          <div class="row"><div class="label">지우기</div><div><span class="key">Backspace</span>: 커서 앞 글자 삭제 / <span class="key">Delete</span>: 커서 뒤 글자 삭제</div></div>
+          <div class="row"><div class="label">실행 취소</div><div><span class="key">Ctrl</span> + <span class="key">Z</span></div></div>
+        </div>
+      </div>
+      <h3>연습 문제</h3>
+      <p>아래 내용을 내 정보로 바꿔 적어봅니다.</p>
+      <span class="answer-line"></span>
+      <span class="answer-line"></span>
+      <span class="answer-line"></span>
+      <p class="page-no">4</p>
+    </section>
+
+    <section class="sheet">
+      <span class="unit">3단원</span>
+      <h2>글자 모양</h2>
+      <div class="goal">배울 기능: 글자 크기, 굵게, 밑줄, 선택하기</div>
+      <div class="warn">순서가 중요합니다. 먼저 바꿀 글자를 드래그해서 선택하고, 그다음 버튼을 누릅니다.</div>
+      <div class="mini-ui">
+        <div class="bar"><span class="tool">글꼴</span><span class="tool">크기 22</span><span class="tool">B 굵게</span><span class="tool">U 밑줄</span></div>
+        <div class="paper center">
+          <p class="big">주간 업무 보고서</p>
+          <p>작성자: 홍길동</p>
+        </div>
+      </div>
+      <div class="do">
+        <div class="do-title">따라하기: 제목 꾸미기</div>
+        <div class="do-body">
+          <div class="row"><div class="label">선택</div><div>제목 “주간 업무 보고서”만 마우스로 드래그합니다.</div></div>
+          <div class="row"><div class="label">누르기</div><div><span class="btn">글자 크기 22</span> → <span class="btn">굵게</span></div></div>
+          <div class="row"><div class="label">확인</div><div class="ok">제목이 본문보다 크고 진하면 성공</div></div>
+        </div>
+      </div>
+      <h3>자주 쓰는 기준</h3>
+      <table>
+        <tr><th>부분</th><th>추천 모양</th></tr>
+        <tr><td>문서 제목</td><td>20-24pt, 굵게</td></tr>
+        <tr><td>소제목</td><td>12-14pt, 굵게</td></tr>
+        <tr><td>본문</td><td>10-11pt, 기본</td></tr>
+      </table>
+      <p class="page-no">5</p>
+    </section>
+
+    <section class="sheet">
+      <span class="unit">4단원</span>
+      <h2>문단 모양</h2>
+      <div class="goal">배울 기능: 가운데 정렬, 왼쪽 정렬, 줄 간격</div>
+      <div class="grid two">
+        <div class="box"><b>글자 모양</b>선택한 글자 자체를 바꿉니다.</div>
+        <div class="box"><b>문단 모양</b>커서가 있는 줄 전체의 위치를 바꿉니다.</div>
+      </div>
+      <div class="mini-ui">
+        <div class="bar"><span class="tool">왼쪽 정렬</span><span class="tool">가운데 정렬</span><span class="tool">줄 간격</span></div>
+        <div class="paper">
+          <p class="center big">주간 업무 보고서</p>
+          <p>작성자: 홍길동</p>
+          <p>보고 기간: 2026.06.08 - 2026.06.12</p>
+        </div>
+      </div>
+      <div class="do">
+        <div class="do-title">따라하기: 제목 가운데 정렬</div>
+        <div class="do-body">
+          <div class="row"><div class="label">작업</div><div>제목 줄 아무 곳이나 클릭합니다.</div></div>
+          <div class="row"><div class="label">누르기</div><div><span class="btn">가운데 정렬</span></div></div>
+          <div class="row"><div class="label">확인</div><div class="ok">제목이 종이 가운데로 가면 성공</div></div>
+        </div>
+      </div>
+      <div class="do">
+        <div class="do-title">따라하기: 본문 줄 간격</div>
+        <div class="do-body">
+          <div class="row"><div class="label">작업</div><div>본문을 드래그합니다.</div></div>
+          <div class="row"><div class="label">누르기</div><div><span class="btn">줄 간격</span> → 160% 정도</div></div>
+          <div class="row"><div class="label">확인</div><div class="ok">글자가 너무 붙어 보이지 않으면 성공</div></div>
+        </div>
+      </div>
+      <p class="page-no">6</p>
+    </section>
+
+    <section class="sheet">
+      <span class="unit">5단원</span>
+      <h2>복사, 붙여넣기, 실행 취소</h2>
+      <div class="goal">배울 기능: Ctrl+C, Ctrl+V, Ctrl+X, Ctrl+Z</div>
+      <table>
+        <tr><th>기능</th><th>단축키</th><th>언제 쓰나</th></tr>
+        <tr><td>복사</td><td>Ctrl+C</td><td>같은 내용을 또 쓸 때</td></tr>
+        <tr><td>붙여넣기</td><td>Ctrl+V</td><td>복사한 내용을 넣을 때</td></tr>
+        <tr><td>잘라내기</td><td>Ctrl+X</td><td>내용을 옮길 때</td></tr>
+        <tr><td>실행 취소</td><td>Ctrl+Z</td><td>실수했을 때</td></tr>
+      </table>
+      <div class="do">
+        <div class="do-title">따라하기: 본문 빠르게 넣기</div>
+        <div class="do-body">
+          <div class="row"><div class="label">선택</div><div>아래 본문 전체를 드래그합니다.</div></div>
+          <div class="row"><div class="label">누르기</div><div><span class="key">Ctrl</span> + <span class="key">C</span> → 한글 문서 클릭 → <span class="key">Ctrl</span> + <span class="key">V</span></div></div>
+          <div class="row"><div class="label">본문</div><div><div class="copy">1. 이번 주 주요 업무
+- 신규 고객 문의 24건 확인 및 처리
+- 매장 재고 현황 점검
+- 직원 교육 일정 안내문 작성
+
+2. 문제점 및 요청 사항
+- 재고 수량 입력 기준이 담당자마다 달라 통일이 필요함
+- 고객 문의 유형을 엑셀에서 분류하면 다음 보고가 쉬워짐
+
+3. 다음 주 계획
+- 고객 문의 유형별 통계 정리
+- 재고 부족 상품 목록 작성
+- 교육 참석자 명단 확정</div></div></div>
+        </div>
+      </div>
+      <p class="page-no">7</p>
+    </section>
+
+    <section class="sheet">
+      <span class="unit">6단원</span>
+      <h2>표 만들기</h2>
+      <div class="goal">배울 기능: 표 삽입, 칸 이동, 첫 줄 꾸미기</div>
+      <div class="do">
+        <div class="do-title">따라하기: 4칸 x 4줄 표 만들기</div>
+        <div class="do-body">
+          <div class="row"><div class="label">위치</div><div>표를 넣을 곳에 커서를 둡니다.</div></div>
+          <div class="row"><div class="label">누르기</div><div><span class="btn">입력</span> → <span class="btn">표</span> → <span class="btn">4칸 x 4줄</span></div></div>
+          <div class="row"><div class="label">칸 이동</div><div><span class="key">Tab</span> 또는 마우스 클릭</div></div>
+        </div>
+      </div>
+      <h3>표에 넣을 내용</h3>
+      <table>
+        <tr><th>업무명</th><th>담당자</th><th>상태</th><th>마감일</th></tr>
+        <tr><td>고객 문의 정리</td><td>홍길동</td><td>완료</td><td>6/10</td></tr>
+        <tr><td>재고표 업데이트</td><td>김영희</td><td>진행 중</td><td>6/13</td></tr>
+        <tr><td>교육 안내문 배포</td><td>이민수</td><td>완료</td><td>6/12</td></tr>
+      </table>
+      <div class="do">
+        <div class="do-title">따라하기: 표 첫 줄 꾸미기</div>
+        <div class="do-body">
+          <div class="row"><div class="label">선택</div><div>표 첫 줄을 선택합니다.</div></div>
+          <div class="row"><div class="label">누르기</div><div><span class="btn">굵게</span> → 가능하면 <span class="btn">셀 배경 회색</span></div></div>
+          <div class="row"><div class="label">확인</div><div class="ok">첫 줄이 제목 줄처럼 보이면 성공</div></div>
+        </div>
+      </div>
+      <p class="page-no">8</p>
+    </section>
+
+    <section class="sheet">
+      <span class="unit">7단원</span>
+      <h2>주간 업무 보고서 완성</h2>
+      <div class="goal">배운 기능을 합쳐 보고서 1개를 완성합니다.</div>
+      <div class="doc">
+        <div class="doc-title">주간 업무 보고서</div>
+        <p><b>작성자:</b> 홍길동　 <b>부서:</b> 운영팀　 <b>작성일:</b> 2026.06.12</p>
+        <p><b>보고 기간:</b> 2026.06.08 - 2026.06.12</p>
+        <h3>1. 이번 주 주요 업무</h3>
+        <p>- 신규 고객 문의 24건 확인 및 처리<br>- 매장 재고 현황 점검<br>- 직원 교육 일정 안내문 작성</p>
+        <h3>2. 진행 현황</h3>
+        <table>
+          <tr><th>업무명</th><th>담당자</th><th>상태</th><th>마감일</th></tr>
+          <tr><td>고객 문의 정리</td><td>홍길동</td><td>완료</td><td>6/10</td></tr>
+          <tr><td>재고표 업데이트</td><td>김영희</td><td>진행 중</td><td>6/13</td></tr>
+        </table>
+      </div>
+      <h3>완성 기준</h3>
+      <ul class="check">
+        <li>□ 제목이 크고 굵고 가운데 정렬되어 있다.</li>
+        <li>□ 작성자, 부서, 작성일이 들어 있다.</li>
+        <li>□ 본문 소제목이 굵게 되어 있다.</li>
+        <li>□ 표가 들어 있다.</li>
+        <li>□ 저장 이름이 알아보기 쉽다.</li>
+      </ul>
+      <p class="page-no">9</p>
+    </section>
+
+    <section class="sheet">
+      <span class="unit">8단원</span>
+      <h2>반복 실습</h2>
+      <div class="goal">같은 기능을 반복해서 손에 익힙니다.</div>
+      <h3>실습 2: 교육 참석 보고서</h3>
+      <div class="copy">교육 참석 보고서
+
+작성자: 홍길동    부서: 총무팀    작성일: 2026.06.12
+교육명: AI 활용 기초 교육
+
+1. 교육 개요
+- 일시: 2026.06.11 14:00-17:00
+- 장소: 2층 교육실
+- 참석 대상: 사무직 직원 12명
+
+2. 교육 내용
+- GPT로 문장 초안 작성하기
+- 이미지 생성 요청문 작성하기
+- 한글 보고서 양식 만들기
+- 엑셀 자료 정리와 기본 함수 이해하기</div>
+      <h3>실습 3: 매장 운영 보고서 표</h3>
+      <table>
+        <tr><th>항목</th><th>이번 주</th><th>지난주</th><th>메모</th></tr>
+        <tr><td>방문 고객 수</td><td>342명</td><td>301명</td><td>증가</td></tr>
+        <tr><td>총 매출</td><td>4,250,000원</td><td>3,880,000원</td><td>증가</td></tr>
+        <tr><td>반품 건수</td><td>6건</td><td>8건</td><td>감소</td></tr>
+      </table>
+      <h3>오늘 끝나기 전</h3>
+      <ul class="check">
+        <li>□ 파일 3개를 저장했다.</li>
+        <li>□ 제목 꾸미기를 할 수 있다.</li>
+        <li>□ 표를 만들 수 있다.</li>
+        <li>□ 저장한 파일을 다시 열어봤다.</li>
+      </ul>
+      <p class="page-no">10</p>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>중장년 컴퓨터 기초반 - 한글 기본 교재</title>
+  <link rel="stylesheet" href="slides.css">
+</head>
+<body>
+  <main class="deck">
+    <section class="slide cover" id="cover">
+      <div class="canvas">
+        <header class="topbar">
+          <div class="brand"><svg><use href="icons.svg#book"></use></svg>중장년 컴퓨터 기초반</div>
+          <div class="lesson-no">한글 기본</div>
+        </header>
+        <div class="content">
+          <div>
+            <p class="kicker">외우는 수업이 아니라, 직접 만드는 수업</p>
+            <h1>한글 프로그램<br>기본 기능 교재</h1>
+            <p class="lead">메뉴 찾기, 단축키, 표와 그림, 찾기/바꾸기까지 실제 문서를 따라 만들며 익숙해지는 슬라이드형 교재입니다.</p>
+          </div>
+          <div class="visual">
+            <div class="mini-doc">
+              <div class="mini-title"></div>
+              <div class="mini-line"></div>
+              <div class="mini-line short"></div>
+              <div class="mini-table">
+                <span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <footer class="footer"><span>HTML + CSS + SVG 교재</span><span>아래로 넘기며 수업</span></footer>
+      </div>
+    </section>
+
+    <section class="slide" id="toc">
+      <div class="canvas">
+        <header class="topbar">
+          <div class="brand"><svg><use href="icons.svg#menu"></use></svg>목차</div>
+          <div class="lesson-no">9개 주제</div>
+        </header>
+        <div class="content">
+          <h2>오늘 필요한 기능을 바로 찾아갑니다</h2>
+          <div class="toc">
+            <a href="#lesson-1"><b>1강</b>메뉴와 저장</a>
+            <a href="#lesson-2"><b>2강</b>글자판과 입력</a>
+            <a href="#lesson-3"><b>3강</b>특수문자와 한자</a>
+            <a href="#lesson-4"><b>4강</b>글자 모양과 정렬</a>
+            <a href="#lesson-5"><b>5강</b>개요 번호</a>
+            <a href="#lesson-6"><b>6강</b>이미지 넣기</a>
+            <a href="#lesson-7"><b>7강</b>표 기본</a>
+            <a href="#lesson-8"><b>8강</b>표 응용과 쪽 설정</a>
+            <a href="#lesson-9"><b>9강</b>찾기와 바꾸기</a>
+          </div>
+        </div>
+        <footer class="footer"><span>완성 예제는 ../examples 폴더</span><span>목차</span></footer>
+      </div>
+    </section>
+
+    <section class="slide" id="lesson-1">
+      <div class="canvas">
+        <header class="topbar"><div class="brand"><svg><use href="icons.svg#book"></use></svg>1강. 한글 메뉴와 저장</div><div class="lesson-no">기본</div></header>
+        <div class="content grid-2">
+          <div>
+            <p class="eyebrow"><svg><use href="icons.svg#spark"></use></svg>쉬운 설명</p>
+            <h2>한글은 문서를 꾸미는 작업실입니다</h2>
+            <p class="lead">메모장은 간단한 글쓰기, 한글은 표·그림·쪽 번호까지 넣는 문서 작성 프로그램입니다. 큰 메뉴는 작업 종류별 서랍이라고 생각합니다.</p>
+          </div>
+          <div class="panel">
+            <table>
+              <tr><th>메뉴</th><th>자주 찾는 기능</th></tr>
+              <tr><td>파일</td><td>새 문서, 열기, 저장, 인쇄</td></tr>
+              <tr><td>편집</td><td>복사, 붙이기, 찾기, 바꾸기</td></tr>
+              <tr><td>입력</td><td>표, 그림, 특수문자</td></tr>
+              <tr><td>서식</td><td>글자 모양, 문단 모양, 개요</td></tr>
+            </table>
+          </div>
+        </div>
+        <footer class="footer"><span>예제: 01_메뉴_저장_연습.hwpx</span><span>1 / 9</span></footer>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="canvas">
+        <header class="topbar"><div class="brand"><svg><use href="icons.svg#keyboard"></use></svg>1강 실습</div><div class="lesson-no">저장</div></header>
+        <div class="content grid-2">
+          <div class="panel">
+            <h3>메뉴와 단축키</h3>
+            <p class="menu-path"><span class="chip">파일</span><span class="arrow">></span><span class="chip">새 문서</span></p>
+            <p class="menu-path"><span class="chip">파일</span><span class="arrow">></span><span class="chip">저장</span></p>
+            <p><code>Ctrl + N</code> 새 문서</p>
+            <p><code>Ctrl + S</code> 저장</p>
+            <p><code>Ctrl + O</code> 불러오기</p>
+          </div>
+          <div class="example">
+            <h3>내가 완성할 문서</h3>
+            <ol>
+              <li>제목에 <code>나의 첫 한글 문서</code> 입력</li>
+              <li>이름, 날짜, 오늘 배운 메뉴 입력</li>
+              <li><code>01_내이름_첫문서.hwpx</code>로 저장</li>
+              <li>닫았다가 다시 불러오기</li>
+            </ol>
+            <p class="check">다시 열리면 성공입니다.</p>
+          </div>
+        </div>
+        <footer class="footer"><span>저장은 수업마다 반복</span><span>1 / 9</span></footer>
+      </div>
+    </section>
+
+    <section class="slide" id="lesson-2">
+      <div class="canvas">
+        <header class="topbar"><div class="brand"><svg><use href="icons.svg#keyboard"></use></svg>2강. 글자판과 기본 입력</div><div class="lesson-no">입력</div></header>
+        <div class="content grid-3">
+          <div class="tile"><svg><use href="icons.svg#menu"></use></svg><strong>자동 변경 끄기</strong><p>도구 > 글자판 > 글자판 자동 변경의 체크를 끕니다.</p></div>
+          <div class="tile"><svg><use href="icons.svg#keyboard"></use></svg><strong>기본 키</strong><p><code>한/영</code> <code>Enter</code> <code>Space</code> <code>Backspace</code></p></div>
+          <div class="tile"><svg><use href="icons.svg#practice"></use></svg><strong>실습</strong><p>이름, 동네, 좋아하는 음식, <code>Hancom Office</code> 문장을 입력합니다.</p></div>
+        </div>
+        <footer class="footer"><span>예제: 02_글자판_입력_연습.hwpx</span><span>2 / 9</span></footer>
+      </div>
+    </section>
+
+    <section class="slide" id="lesson-3">
+      <div class="canvas">
+        <header class="topbar"><div class="brand"><svg><use href="icons.svg#spark"></use></svg>3강. 특수문자와 한자</div><div class="lesson-no">문자표</div></header>
+        <div class="content grid-2">
+          <div>
+            <p class="eyebrow"><svg><use href="icons.svg#spark"></use></svg>키보드에 없는 글자 넣기</p>
+            <h2><code>Ctrl + F10</code>으로 문자표를 엽니다</h2>
+            <p class="lead">동그라미 숫자, 전화기, 화살표, 별표는 문자표에서 넣습니다. 한자는 한글을 먼저 입력한 뒤 변환합니다.</p>
+          </div>
+          <div class="example">
+            <h3>마을 모임 안내 만들기</h3>
+            <ol>
+              <li>날짜 앞에 <code>①</code>, 장소 앞에 <code>②</code></li>
+              <li>준비물 앞에 <code>③</code></li>
+              <li>전화번호 앞에 <code>☎</code></li>
+              <li><code>한국</code>을 <code>韓國</code>으로 변환</li>
+            </ol>
+          </div>
+        </div>
+        <footer class="footer"><span>예제: 03_특수문자_한자_안내문.hwpx</span><span>3 / 9</span></footer>
+      </div>
+    </section>
+
+    <section class="slide" id="lesson-4">
+      <div class="canvas">
+        <header class="topbar"><div class="brand"><svg><use href="icons.svg#practice"></use></svg>4강. 글자 모양과 정렬</div><div class="lesson-no">꾸미기</div></header>
+        <div class="content">
+          <h2>제목은 크게, 중요한 문장은 눈에 띄게</h2>
+          <div class="grid-3">
+            <div class="tile"><strong>글자 모양</strong><p><code>Alt + L</code><br>글꼴, 크기, 색, 밑줄을 바꿉니다.</p></div>
+            <div class="tile"><strong>강조</strong><p><code>Ctrl + B</code> 굵게<br><code>Ctrl + U</code> 밑줄<br><code>Ctrl + I</code> 기울임</p></div>
+            <div class="tile"><strong>정렬</strong><p><code>Ctrl + Shift + C</code> 가운데<br><code>Ctrl + Shift + L</code> 왼쪽</p></div>
+          </div>
+          <div class="example"><strong>실습:</strong> <code>건강 걷기 모임 안내</code> 제목은 크게/굵게/가운데, 준비물은 밑줄, 전화번호는 파란색으로 바꿉니다.</div>
+        </div>
+        <footer class="footer"><span>예제: 04_글자모양_행사안내문.hwpx</span><span>4 / 9</span></footer>
+      </div>
+    </section>
+
+    <section class="slide" id="lesson-5">
+      <div class="canvas">
+        <header class="topbar"><div class="brand"><svg><use href="icons.svg#menu"></use></svg>5강. 개요 번호</div><div class="lesson-no">목차</div></header>
+        <div class="content grid-2">
+          <div>
+            <h2>번호가 있는 문서는 순서가 보입니다</h2>
+            <p class="lead">회의 순서, 교육 목차, 보고서 항목은 개요 번호를 쓰면 보기 쉽고 중간에 항목을 추가해도 번호가 맞춰집니다.</p>
+            <p><code>서식 > 개요 번호 모양</code></p>
+          </div>
+          <div class="panel">
+            <h3>완성 모양</h3>
+            <p>1. 인사</p>
+            <p>2. 지난 활동 확인</p>
+            <p>&nbsp;&nbsp;2.1 사진 정리</p>
+            <p>3. 다음 일정 정하기</p>
+            <p>&nbsp;&nbsp;3.1 날짜</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;3.1.1 후보 날짜</p>
+          </div>
+        </div>
+        <footer class="footer"><span>예제: 05_개요번호_회의순서.hwpx</span><span>5 / 9</span></footer>
+      </div>
+    </section>
+
+    <section class="slide" id="lesson-6">
+      <div class="canvas">
+        <header class="topbar"><div class="brand"><svg><use href="icons.svg#image"></use></svg>6강. 이미지 넣기와 배치</div><div class="lesson-no">그림</div></header>
+        <div class="content">
+          <h2>그림은 넣는 것보다 배치가 중요합니다</h2>
+          <div class="grid-3">
+            <div class="tile"><svg><use href="icons.svg#image"></use></svg><strong>글자처럼 취급</strong><p>그림이 큰 글자처럼 움직입니다. 처음 배울 때 가장 안정적입니다.</p></div>
+            <div class="tile"><svg><use href="icons.svg#image"></use></svg><strong>어울림</strong><p>글자가 그림 주변을 감쌉니다. 안내문과 초대장에 좋습니다.</p></div>
+            <div class="tile"><svg><use href="icons.svg#image"></use></svg><strong>글 뒤로</strong><p>그림이 배경처럼 뒤에 깔립니다. 희미한 배경에 씁니다.</p></div>
+          </div>
+          <div class="example"><strong>실습:</strong> <code>우리 동네 작은 음악회</code> 문서에 같은 그림을 넣고 세 가지 배치를 모두 바꿔 봅니다.</div>
+        </div>
+        <footer class="footer"><span>예제: 06_이미지배치_초대장.hwpx</span><span>6 / 9</span></footer>
+      </div>
+    </section>
+
+    <section class="slide" id="lesson-7">
+      <div class="canvas">
+        <header class="topbar"><div class="brand"><svg><use href="icons.svg#table"></use></svg>7강. 표 만들기와 표 크기 조절</div><div class="lesson-no">표 기본</div></header>
+        <div class="content grid-2">
+          <div>
+            <h2>같은 종류의 정보는 표로 정리합니다</h2>
+            <p class="lead">연락망, 일정표, 물품 목록처럼 반복되는 정보는 줄과 칸으로 나누면 한눈에 보입니다.</p>
+            <p><code>Ctrl + N, T</code> 표 만들기</p>
+            <p><code>L</code> 셀 테두리/배경</p>
+          </div>
+          <div class="visual">
+            <div class="mini-doc">
+              <div class="mini-title"></div>
+              <div class="mini-table">
+                <span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <footer class="footer"><span>예제: 07_표기본_연락망.hwpx</span><span>7 / 9</span></footer>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="canvas">
+        <header class="topbar"><div class="brand"><svg><use href="icons.svg#check"></use></svg>7강 따라 만들기</div><div class="lesson-no">연락망</div></header>
+        <div class="content grid-2">
+          <div class="panel">
+            <h3>완성할 표</h3>
+            <table>
+              <tr><th>번호</th><th>이름</th><th>전화번호</th><th>비고</th></tr>
+              <tr><td>1</td><td>홍길동</td><td>010-1111-2222</td><td>반장</td></tr>
+              <tr><td>2</td><td>김영희</td><td>010-3333-4444</td><td>연락 가능</td></tr>
+              <tr><td>3</td><td>이민수</td><td>010-5555-6666</td><td>문자 선호</td></tr>
+            </table>
+          </div>
+          <div class="example">
+            <h3>실습 순서</h3>
+            <ol>
+              <li>5줄 4칸 표 만들기</li>
+              <li>첫 줄에 제목 입력</li>
+              <li>셀 너비와 높이 맞추기</li>
+              <li>첫 줄 테두리 또는 배경색 바꾸기</li>
+            </ol>
+          </div>
+        </div>
+        <footer class="footer"><span>실제 한글 표 예제 파일 제공</span><span>7 / 9</span></footer>
+      </div>
+    </section>
+
+    <section class="slide" id="lesson-8">
+      <div class="canvas">
+        <header class="topbar"><div class="brand"><svg><use href="icons.svg#table"></use></svg>8강. 표 응용과 쪽 방향</div><div class="lesson-no">표 응용</div></header>
+        <div class="content grid-2">
+          <div>
+            <h2>표를 신청서와 일정표처럼 다듬습니다</h2>
+            <p class="lead">셀 합치기, 셀 배경색, 표 안 그림 넣기, 가로 용지 설정을 연습합니다.</p>
+            <p><code>F7</code> 편집 용지</p>
+            <p><code>L</code> 셀 테두리/배경</p>
+          </div>
+          <div class="example">
+            <h3>6월 교육 일정표</h3>
+            <ol>
+              <li>용지 방향을 가로로 변경</li>
+              <li>6줄 5칸 표 만들기</li>
+              <li>첫 줄 셀 합치기</li>
+              <li>요일 칸에 배경색 넣기</li>
+              <li>표 안에 작은 그림 넣기</li>
+            </ol>
+          </div>
+        </div>
+        <footer class="footer"><span>예제: 08_표응용_일정표.hwpx</span><span>8 / 9</span></footer>
+      </div>
+    </section>
+
+    <section class="slide" id="lesson-9">
+      <div class="canvas">
+        <header class="topbar"><div class="brand"><svg><use href="icons.svg#search"></use></svg>9강. 찾기와 글자 바꾸기</div><div class="lesson-no">수정</div></header>
+        <div class="content grid-2">
+          <div>
+            <h2>긴 문서에서는 눈으로 찾지 않습니다</h2>
+            <p class="lead">찾기는 원하는 단어 위치를 보여주고, 바꾸기는 같은 단어를 한꺼번에 고쳐 줍니다.</p>
+            <p><code>Ctrl + F</code> 찾기</p>
+            <p><code>Ctrl + H</code> 바꾸기</p>
+          </div>
+          <div class="example">
+            <h3>바꾸기 실습</h3>
+            <ol>
+              <li><code>홍길동</code>을 자기 이름으로 바꾸기</li>
+              <li><code>6월 20일</code>을 실제 수업 날짜로 바꾸기</li>
+              <li><code>마을회관</code>을 원하는 장소로 바꾸기</li>
+            </ol>
+            <p class="check">같은 단어가 빠짐없이 바뀌면 성공입니다.</p>
+          </div>
+        </div>
+        <footer class="footer"><span>예제: 09_찾기바꾸기_점검문서.hwpx</span><span>9 / 9</span></footer>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,421 @@
+:root {
+  --ink: #162033;
+  --muted: #667085;
+  --paper: #f7f4ed;
+  --card: #fffdf8;
+  --line: #ded7ca;
+  --red: #c4473d;
+  --green: #1f7a66;
+  --blue: #2f5f9f;
+  --gold: #b57a20;
+  --shadow: 0 18px 48px rgba(22, 32, 51, .16);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-snap-type: y mandatory;
+  background: #e9e4da;
+}
+
+body {
+  margin: 0;
+  color: var(--ink);
+  font-family: "Pretendard", "Malgun Gothic", "Apple SD Gothic Neo", system-ui, sans-serif;
+  background:
+    linear-gradient(90deg, rgba(47,95,159,.08) 1px, transparent 1px),
+    linear-gradient(rgba(47,95,159,.06) 1px, transparent 1px),
+    var(--paper);
+  background-size: 36px 36px;
+}
+
+.deck {
+  width: min(1180px, 94vw);
+  margin: 0 auto;
+}
+
+.slide {
+  min-height: 100vh;
+  scroll-snap-align: start;
+  display: grid;
+  place-items: center;
+  padding: 34px 0;
+}
+
+.canvas {
+  width: min(1120px, 100%);
+  aspect-ratio: 16 / 9;
+  min-height: 620px;
+  background: var(--card);
+  border: 1px solid rgba(22, 32, 51, .12);
+  box-shadow: var(--shadow);
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  overflow: hidden;
+  position: relative;
+}
+
+.canvas::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 90% 18%, rgba(31, 122, 102, .12), transparent 22%),
+    linear-gradient(135deg, rgba(196, 71, 61, .08), transparent 36%);
+}
+
+.topbar,
+.footer,
+.content {
+  position: relative;
+  z-index: 1;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 30px 42px 18px;
+  border-bottom: 1px solid var(--line);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 800;
+  letter-spacing: 0;
+}
+
+.brand svg,
+.eyebrow svg,
+.tile svg {
+  width: 28px;
+  height: 28px;
+}
+
+.lesson-no {
+  padding: 8px 14px;
+  border: 1px solid var(--line);
+  color: var(--blue);
+  background: #f6f8fb;
+  font-weight: 800;
+}
+
+.content {
+  padding: 34px 48px;
+  display: grid;
+  gap: 24px;
+  align-content: center;
+}
+
+.cover .content {
+  grid-template-columns: 1.05fr .95fr;
+  align-items: center;
+}
+
+.kicker {
+  color: var(--red);
+  font-size: 18px;
+  font-weight: 800;
+  margin: 0 0 12px;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+h1 {
+  font-size: 58px;
+  line-height: 1.08;
+  letter-spacing: 0;
+}
+
+h2 {
+  font-size: 40px;
+  line-height: 1.16;
+  letter-spacing: 0;
+}
+
+h3 {
+  font-size: 24px;
+  line-height: 1.25;
+}
+
+p,
+li,
+td,
+th {
+  font-size: 20px;
+  line-height: 1.55;
+}
+
+.lead {
+  color: var(--muted);
+  font-size: 24px;
+  line-height: 1.5;
+  margin-top: 18px;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.panel,
+.tile,
+.example,
+.note {
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, .72);
+  padding: 22px;
+}
+
+.tile {
+  min-height: 168px;
+}
+
+.tile svg {
+  color: var(--green);
+  margin-bottom: 14px;
+}
+
+.tile strong {
+  display: block;
+  font-size: 22px;
+  margin-bottom: 8px;
+}
+
+.menu-path {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.chip,
+code {
+  display: inline-block;
+  border: 1px solid #c9d4e8;
+  background: #f3f7ff;
+  color: #244b80;
+  font-family: "Cascadia Mono", "Consolas", monospace;
+  font-size: 18px;
+  padding: 5px 9px;
+  white-space: nowrap;
+}
+
+.arrow {
+  color: var(--muted);
+  font-weight: 900;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding-left: 24px;
+}
+
+li + li {
+  margin-top: 8px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+}
+
+th {
+  background: #e9f0ef;
+  color: #113d35;
+  text-align: left;
+}
+
+th,
+td {
+  border: 1px solid var(--line);
+  padding: 12px 14px;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--green);
+  font-weight: 800;
+  margin-bottom: 14px;
+}
+
+.example {
+  border-left: 8px solid var(--gold);
+}
+
+.check {
+  color: var(--green);
+  font-weight: 800;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 42px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 16px;
+}
+
+.visual {
+  min-height: 330px;
+  border: 1px solid var(--line);
+  background: #f8fbff;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+}
+
+.visual svg {
+  width: 100%;
+  max-height: 300px;
+}
+
+.mini-doc {
+  width: 78%;
+  min-height: 300px;
+  background: white;
+  border: 1px solid #d6d6d6;
+  box-shadow: 0 14px 30px rgba(22, 32, 51, .12);
+  padding: 26px;
+}
+
+.mini-title {
+  height: 24px;
+  width: 70%;
+  background: var(--blue);
+  margin: 0 auto 20px;
+}
+
+.mini-line {
+  height: 12px;
+  background: #dce4ef;
+  margin: 12px 0;
+}
+
+.mini-line.short {
+  width: 58%;
+}
+
+.mini-table {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border: 1px solid #9eb5bf;
+}
+
+.mini-table span {
+  min-height: 36px;
+  border: 1px solid #9eb5bf;
+  background: white;
+}
+
+.mini-table span:nth-child(-n+4) {
+  background: #dcefeb;
+}
+
+.toc {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.toc a {
+  color: inherit;
+  text-decoration: none;
+  border: 1px solid var(--line);
+  background: white;
+  padding: 16px;
+  min-height: 88px;
+}
+
+.toc b {
+  display: block;
+  color: var(--red);
+  margin-bottom: 6px;
+}
+
+@media (max-width: 860px) {
+  html {
+    scroll-snap-type: none;
+  }
+
+  .slide {
+    min-height: auto;
+    padding: 16px 0;
+  }
+
+  .canvas {
+    aspect-ratio: auto;
+    min-height: auto;
+  }
+
+  .cover .content,
+  .grid-2,
+  .grid-3,
+  .toc {
+    grid-template-columns: 1fr;
+  }
+
+  h1 {
+    font-size: 40px;
+  }
+
+  h2 {
+    font-size: 32px;
+  }
+
+  p,
+  li,
+  td,
+  th {
+    font-size: 18px;
+  }
+}
+
+@media print {
+  html,
+  body {
+    background: white;
+  }
+
+  .deck {
+    width: 100%;
+  }
+
+  .slide {
+    min-height: auto;
+    page-break-after: always;
+    padding: 0;
+  }
+
+  .canvas {
+    box-shadow: none;
+    width: 100%;
+    min-height: auto;
+    border: 0;
+  }
+}

@@ -659,12 +659,291 @@ def create_final_project() -> None:
     save(wb, FINAL_DIR / "최종실습_소상공인_월간매출정산.xlsx")
 
 
+def create_household_budget_project() -> None:
+    md = """# 최종 실습 프로젝트: 우리집 월간 가계부
+
+## 실습 목표
+한 달 수입과 지출을 정리해서 남은 돈, 항목별 지출, 고정비 비중, 예산 초과 항목을 확인합니다.
+
+## 실제로 자주 쓰는 기능
+- SUM으로 총수입, 총지출, 잔액을 계산합니다.
+- SUMIF로 식비, 교통, 통신비 같은 항목별 지출을 계산합니다.
+- COUNTIF로 지출 건수를 셉니다.
+- AVERAGE로 하루 평균 지출을 확인합니다.
+- IF로 예산 초과 여부를 표시합니다.
+- 필터로 특정 항목이나 결제수단만 확인합니다.
+- 조건부 서식으로 예산 초과와 큰 지출을 표시합니다.
+
+## 완성 후 확인 질문
+- 이번 달 총수입과 총지출은 얼마인가요?
+- 가장 많이 쓴 항목은 무엇인가요?
+- 예산을 초과한 항목은 무엇인가요?
+- 카드 지출과 현금 지출 중 어느 쪽이 더 큰가요?
+- 다음 달에 줄일 수 있는 지출은 무엇인가요?
+
+## 사용 파일
+`최종실습_우리집_월간가계부.xlsx`
+"""
+    (FINAL_DIR / "최종실습_우리집_월간가계부.md").write_text(md, encoding="utf-8")
+
+    wb = Workbook()
+
+    ws = wb.active
+    ws.title = "가계부"
+    style_sheet(ws, "우리집 월간 가계부", "수입과 지출을 한 달 단위로 정리합니다.", 9)
+    ws.append([])
+    ws.append(["날짜", "구분", "항목", "내용", "결제수단", "수입", "지출", "메모", "확인"])
+    rows = [
+        [date(2026, 6, 1), "수입", "급여", "월급", "계좌이체", 2600000, 0, ""],
+        [date(2026, 6, 1), "지출", "주거", "월세/관리비", "계좌이체", 0, 650000, "고정비"],
+        [date(2026, 6, 2), "지출", "식비", "마트 장보기", "카드", 0, 86400, ""],
+        [date(2026, 6, 3), "지출", "교통", "교통카드 충전", "카드", 0, 50000, ""],
+        [date(2026, 6, 5), "지출", "통신", "휴대폰 요금", "계좌이체", 0, 69000, "고정비"],
+        [date(2026, 6, 6), "지출", "식비", "외식", "카드", 0, 42000, ""],
+        [date(2026, 6, 8), "지출", "의료", "병원/약국", "카드", 0, 31500, ""],
+        [date(2026, 6, 10), "수입", "기타수입", "중고거래", "현금", 70000, 0, ""],
+        [date(2026, 6, 12), "지출", "생활용품", "세제/휴지", "카드", 0, 38400, ""],
+        [date(2026, 6, 15), "지출", "보험", "보험료", "계좌이체", 0, 145000, "고정비"],
+        [date(2026, 6, 18), "지출", "식비", "마트 장보기", "카드", 0, 72300, ""],
+        [date(2026, 6, 20), "지출", "문화", "영화/도서", "카드", 0, 28000, ""],
+        [date(2026, 6, 22), "지출", "경조사", "축의금", "현금", 0, 100000, ""],
+        [date(2026, 6, 25), "지출", "식비", "외식", "카드", 0, 55000, ""],
+        [date(2026, 6, 28), "지출", "기타", "예비비 사용", "현금", 0, 30000, ""],
+    ]
+    for r, row in enumerate(rows, start=5):
+        ws.append(row + [f'=IF(G{r}>=100000,"큰지출","")'])
+    style_table(ws, 4, 19, 1, 9)
+    ws.auto_filter.ref = "A4:I19"
+    ws.freeze_panes = "A5"
+    set_widths(ws, [12, 8, 12, 18, 12, 12, 12, 12, 10])
+    for r in range(5, 20):
+        ws[f"A{r}"].number_format = "yyyy-mm-dd"
+        ws[f"F{r}"].number_format = '#,##0"원"'
+        ws[f"G{r}"].number_format = '#,##0"원"'
+    ws.conditional_formatting.add("G5:G19", CellIsRule(operator="greaterThanOrEqual", formula=["100000"], fill=PatternFill("solid", fgColor=WARN_FILL)))
+
+    summary = wb.create_sheet("월간요약")
+    style_sheet(summary, "월간 요약", "가계부에서 가장 자주 확인하는 숫자입니다.", 8)
+    summary.append([])
+    summary.append(["항목", "값", "사용 기능"])
+    summary_rows = [
+        ["총수입", "=SUM(가계부!F5:F19)", "SUM"],
+        ["총지출", "=SUM(가계부!G5:G19)", "SUM"],
+        ["남은돈", "=B5-B6", "수입-지출"],
+        ["지출건수", '=COUNTIF(가계부!B5:B19,"지출")', "COUNTIF"],
+        ["하루 평균 지출", "=B6/30", "나누기"],
+        ["저축 가능 여부", '=IF(B7>=300000,"가능","조정필요")', "IF"],
+    ]
+    for row in summary_rows:
+        summary.append(row)
+    summary.append([])
+    summary.append(["결제수단", "지출합계", "건수"])
+    for r, method in enumerate(["카드", "현금", "계좌이체"], start=13):
+        summary.append([method, f'=SUMIF(가계부!E5:E19,A{r},가계부!G5:G19)', f'=COUNTIF(가계부!E5:E19,A{r})'])
+    style_table(summary, 4, 10, 1, 3)
+    style_table(summary, 12, 15, 1, 3)
+    set_widths(summary, [16, 14, 14, 4, 12, 12, 12, 12])
+    for r in list(range(5, 10)) + list(range(13, 16)):
+        summary[f"B{r}"].number_format = '#,##0"원"'
+
+    cats = wb.create_sheet("항목별예산")
+    style_sheet(cats, "항목별 예산 확인", "SUMIF와 IF로 예산 초과 항목을 찾습니다.", 6)
+    cats.append([])
+    cats.append(["항목", "예산", "실제지출", "차이", "판정", "메모"])
+    budget_rows = [
+        ["식비", 230000],
+        ["주거", 650000],
+        ["교통", 70000],
+        ["통신", 70000],
+        ["의료", 50000],
+        ["생활용품", 60000],
+        ["보험", 150000],
+        ["문화", 50000],
+        ["경조사", 80000],
+        ["기타", 50000],
+    ]
+    for r, row in enumerate(budget_rows, start=5):
+        cats.append([row[0], row[1], f'=SUMIF(가계부!C5:C19,A{r},가계부!G5:G19)', f"=B{r}-C{r}", f'=IF(C{r}>B{r},"예산초과","정상")', ""])
+    style_table(cats, 4, 14, 1, 6)
+    cats.auto_filter.ref = "A4:F14"
+    cats.freeze_panes = "A5"
+    set_widths(cats, [12, 12, 12, 12, 12, 16])
+    for r in range(5, 15):
+        for col in "BCD":
+            cats[f"{col}{r}"].number_format = '#,##0"원"'
+    cats.conditional_formatting.add("E5:E14", CellIsRule(operator="equal", formula=['"예산초과"'], fill=PatternFill("solid", fgColor=WARN_FILL)))
+
+    guide = wb.create_sheet("실습순서")
+    style_sheet(guide, "실습 순서", "수업 시간에 이 순서대로 진행합니다.", 3)
+    guide.append([])
+    guide.append(["순서", "할 일", "확인"])
+    guide_rows = [
+        [1, "가계부 시트에서 수입과 지출 입력 구조를 확인합니다.", ""],
+        [2, "월간요약 시트에서 총수입, 총지출, 남은돈 수식을 확인합니다.", ""],
+        [3, "항목별예산 시트에서 식비, 주거, 교통비 합계를 확인합니다.", ""],
+        [4, "예산초과 항목을 조건부 서식 색으로 찾습니다.", ""],
+        [5, "가계부 시트 필터로 카드 지출만 확인합니다.", ""],
+        [6, "가계부 시트에서 지출액 큰 순서로 정렬합니다.", ""],
+    ]
+    for row in guide_rows:
+        guide.append(row)
+    style_table(guide, 4, 10, 1, 3)
+    set_widths(guide, [8, 44, 12])
+
+    save(wb, FINAL_DIR / "최종실습_우리집_월간가계부.xlsx")
+
+
+def create_inventory_project() -> None:
+    md = """# 최종 실습 프로젝트: 재고 관리표
+
+## 실습 목표
+작은 매장, 사무실, 창고에서 자주 쓰는 재고 관리표를 완성합니다.
+품목별 입고, 출고, 현재재고, 안전재고를 정리하고 발주가 필요한 품목을 찾습니다.
+
+## 실제로 자주 쓰는 기능
+- SUM으로 전체 재고금액을 계산합니다.
+- SUMIF로 품목별 입고수량과 출고수량을 계산합니다.
+- IF로 발주필요 여부를 표시합니다.
+- COUNTIF로 발주필요 품목 수를 셉니다.
+- MIN으로 가장 적게 남은 재고를 확인합니다.
+- 정렬로 재고 부족 품목을 위로 올립니다.
+- 필터로 발주필요 품목만 봅니다.
+- 조건부 서식으로 부족한 재고를 자동 표시합니다.
+
+## 완성 후 확인 질문
+- 현재 발주가 필요한 품목은 몇 개인가요?
+- 가장 먼저 발주해야 할 품목은 무엇인가요?
+- 현재 재고금액이 가장 큰 품목은 무엇인가요?
+- 이번 달 입고와 출고가 많은 품목은 무엇인가요?
+
+## 사용 파일
+`최종실습_재고관리표.xlsx`
+"""
+    (FINAL_DIR / "최종실습_재고관리표.md").write_text(md, encoding="utf-8")
+
+    wb = Workbook()
+
+    items = wb.active
+    items.title = "재고현황"
+    style_sheet(items, "재고 관리표", "현재 재고와 안전재고를 비교해 발주 필요 품목을 찾습니다.", 10)
+    items.append([])
+    items.append(["품목코드", "품목명", "분류", "기초재고", "입고수량", "출고수량", "현재재고", "안전재고", "단가", "재고금액", "상태"])
+    rows = [
+        ["P-001", "원두 1kg", "원재료", 12, 20, 26, 10, 18500],
+        ["P-002", "우유 1L", "원재료", 30, 50, 58, 15, 2500],
+        ["P-003", "종이컵", "소모품", 600, 1000, 1280, 300, 55],
+        ["P-004", "포장봉투", "소모품", 450, 500, 720, 250, 80],
+        ["P-005", "샌드위치 포장지", "소모품", 180, 300, 410, 120, 120],
+        ["P-006", "머그컵", "상품", 24, 20, 31, 10, 5200],
+        ["P-007", "원두 200g", "상품", 18, 30, 39, 12, 7200],
+        ["P-008", "영수증 용지", "소모품", 8, 10, 14, 8, 960],
+    ]
+    for r, row in enumerate(rows, start=5):
+        items.append(row[:4] + [row[4], row[5], f"=D{r}+E{r}-F{r}", row[6], row[7], f"=G{r}*I{r}", f'=IF(G{r}<H{r},"발주필요","정상")'])
+    style_table(items, 4, 12, 1, 11)
+    items.auto_filter.ref = "A4:K12"
+    items.freeze_panes = "A5"
+    set_widths(items, [10, 18, 10, 10, 10, 10, 10, 10, 10, 12, 12])
+    for r in range(5, 13):
+        items[f"I{r}"].number_format = '#,##0"원"'
+        items[f"J{r}"].number_format = '#,##0"원"'
+    items.conditional_formatting.add("K5:K12", CellIsRule(operator="equal", formula=['"발주필요"'], fill=PatternFill("solid", fgColor=WARN_FILL)))
+    items.conditional_formatting.add("G5:G12", FormulaRule(formula=["$G5<$H5"], fill=PatternFill("solid", fgColor=WARN_FILL)))
+
+    log = wb.create_sheet("입출고기록")
+    style_sheet(log, "입출고 기록", "입고와 출고 내역을 날짜순으로 기록합니다.", 8)
+    log.append([])
+    log.append(["날짜", "구분", "품목코드", "품목명", "수량", "담당자", "거래처/사용처", "메모"])
+    log_rows = [
+        [date(2026, 6, 1), "입고", "P-001", "원두 1kg", 20, "김지훈", "서울푸드", ""],
+        [date(2026, 6, 1), "출고", "P-003", "종이컵", 400, "박선영", "매장사용", ""],
+        [date(2026, 6, 2), "입고", "P-002", "우유 1L", 50, "김지훈", "삼익식품", ""],
+        [date(2026, 6, 3), "출고", "P-001", "원두 1kg", 10, "이민호", "매장사용", ""],
+        [date(2026, 6, 4), "출고", "P-004", "포장봉투", 240, "박선영", "포장사용", ""],
+        [date(2026, 6, 5), "입고", "P-006", "머그컵", 20, "김지훈", "에이스비품", ""],
+        [date(2026, 6, 8), "출고", "P-007", "원두 200g", 18, "이민호", "판매", ""],
+        [date(2026, 6, 9), "출고", "P-008", "영수증 용지", 6, "박선영", "매장사용", ""],
+    ]
+    for row in log_rows:
+        log.append(row)
+    style_table(log, 4, 12, 1, 8)
+    log.auto_filter.ref = "A4:H12"
+    log.freeze_panes = "A5"
+    set_widths(log, [12, 8, 10, 18, 8, 10, 16, 16])
+    for r in range(5, 13):
+        log[f"A{r}"].number_format = "yyyy-mm-dd"
+
+    summary = wb.create_sheet("요약")
+    style_sheet(summary, "재고 요약", "발주 대상과 재고금액을 한눈에 확인합니다.", 7)
+    summary.append([])
+    summary.append(["항목", "값", "사용 기능"])
+    summary_rows = [
+        ["전체 재고금액", "=SUM(재고현황!J5:J12)", "SUM"],
+        ["발주필요 품목 수", '=COUNTIF(재고현황!K5:K12,"발주필요")', "COUNTIF"],
+        ["가장 적은 현재재고", "=MIN(재고현황!G5:G12)", "MIN"],
+        ["전체 입고수량", "=SUM(재고현황!E5:E12)", "SUM"],
+        ["전체 출고수량", "=SUM(재고현황!F5:F12)", "SUM"],
+    ]
+    for row in summary_rows:
+        summary.append(row)
+    summary.append([])
+    summary.append(["분류", "재고금액", "품목수"])
+    for r, category in enumerate(["원재료", "소모품", "상품"], start=12):
+        summary.append([category, f'=SUMIF(재고현황!C5:C12,A{r},재고현황!J5:J12)', f'=COUNTIF(재고현황!C5:C12,A{r})'])
+    style_table(summary, 4, 9, 1, 3)
+    style_table(summary, 11, 14, 1, 3)
+    set_widths(summary, [18, 14, 14, 4, 16, 12, 12])
+    summary["B5"].number_format = '#,##0"원"'
+    for r in range(12, 15):
+        summary[f"B{r}"].number_format = '#,##0"원"'
+
+    order = wb.create_sheet("발주목록")
+    style_sheet(order, "발주 목록", "발주필요 품목을 옮겨 적고 주문 수량을 결정합니다.", 8)
+    order.append([])
+    order.append(["품목코드", "품목명", "현재재고", "안전재고", "부족수량", "권장발주", "거래처", "처리"])
+    order_rows = [
+        ["P-001", "원두 1kg", "=재고현황!G5", "=재고현황!H5"],
+        ["P-004", "포장봉투", "=재고현황!G8", "=재고현황!H8"],
+        ["P-005", "샌드위치 포장지", "=재고현황!G9", "=재고현황!H9"],
+        ["P-008", "영수증 용지", "=재고현황!G12", "=재고현황!H12"],
+    ]
+    vendors = ["서울푸드", "정다운상사", "에이스비품", "에이스비품"]
+    for r, row in enumerate(order_rows, start=5):
+        order.append(row + [f"=D{r}-C{r}", f'=IF(E{r}>0,E{r}+10,0)', vendors[r - 5], ""])
+    style_table(order, 4, 8, 1, 8)
+    order.auto_filter.ref = "A4:H8"
+    order.freeze_panes = "A5"
+    set_widths(order, [10, 18, 10, 10, 10, 10, 14, 12])
+    order.conditional_formatting.add("E5:E8", CellIsRule(operator="greaterThan", formula=["0"], fill=PatternFill("solid", fgColor=WARN_FILL)))
+
+    guide = wb.create_sheet("실습순서")
+    style_sheet(guide, "실습 순서", "수업 시간에 이 순서대로 진행합니다.", 3)
+    guide.append([])
+    guide.append(["순서", "할 일", "확인"])
+    guide_rows = [
+        [1, "재고현황 시트에서 현재재고 수식을 확인합니다.", ""],
+        [2, "상태 열의 IF 수식으로 발주필요 여부를 확인합니다.", ""],
+        [3, "필터로 발주필요 품목만 봅니다.", ""],
+        [4, "현재재고가 적은 순서로 정렬합니다.", ""],
+        [5, "요약 시트에서 전체 재고금액과 발주필요 품목 수를 확인합니다.", ""],
+        [6, "발주목록 시트에서 권장발주 수량을 확인합니다.", ""],
+    ]
+    for row in guide_rows:
+        guide.append(row)
+    style_table(guide, 4, 10, 1, 3)
+    set_widths(guide, [8, 48, 12])
+
+    save(wb, FINAL_DIR / "최종실습_재고관리표.xlsx")
+
+
 def main() -> None:
     clean_dirs()
     for item in ITEMS:
         write_md(item)
         workbook_for_item(item)
     create_final_project()
+    create_household_budget_project()
+    create_inventory_project()
     print(f"교재: {DOC_DIR}")
     print(f"항목별 실습예제: {EX_DIR}")
     print(f"최종실습: {FINAL_DIR}")

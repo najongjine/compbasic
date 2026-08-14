@@ -1,0 +1,167 @@
+{
+   "extDescription": {
+      "message": "Download illust, manga, ugoira(animation) and novel from Pixiv"
+   },
+   "optDescription": {
+      "message": "Description"
+   },
+   "optDescriptionMacros": {
+      "message": "Macros"
+   },
+   "optDescriptionMacrosDescription": {
+      "message": "You can use the macros below as names for directory, file and page."
+   },
+   "optDescriptionMacrosListDescription": {
+      "message": "Description"
+   },
+   "optDescriptionMacrosListMacros": {
+      "message": "Macros"
+   },
+   "optDescriptionMacrosList_D": {
+      "message": "Day"
+   },
+   "optDescriptionMacrosList_DD": {
+      "message": "Day(2 digits)"
+   },
+   "optDescriptionMacrosList_M": {
+      "message": "Month"
+   },
+   "optDescriptionMacrosList_MM": {
+      "message": "Month(2 digits)"
+   },
+   "optDescriptionMacrosList_YY": {
+      "message": "Year(2 digits)"
+   },
+   "optDescriptionMacrosList_YYYY": {
+      "message": "Year"
+   },
+   "optDescriptionMacrosList_h": {
+      "message": "Hours"
+   },
+   "optDescriptionMacrosList_hh": {
+      "message": "Hours(2 digits)"
+   },
+   "optDescriptionMacrosList_id": {
+      "message": "Illust ID"
+   },
+   "optDescriptionMacrosList_m_2": {
+      "message": "Minutes"
+   },
+   "optDescriptionMacrosList_mm_2": {
+      "message": "Minutes(2 digits)"
+   },
+   "optDescriptionMacrosList_page": {
+      "message": "Number of pages *Page only"
+   },
+   "optDescriptionMacrosList_page2": {
+      "message": "Number of pages(2 digits) *Page name only"
+   },
+   "optDescriptionMacrosList_page3": {
+      "message": "Number of pages(3 digits) *Page name only"
+   },
+   "optDescriptionMacrosList_page4": {
+      "message": "Number of pages(4 digits) *Page name only"
+   },
+   "optDescriptionMacrosList_seriesId": {
+      "message": "Series ID"
+   },
+   "optDescriptionMacrosList_seriesTitle": {
+      "message": "Series title"
+   },
+   "optDescriptionMacrosList_title": {
+      "message": "Illust title"
+   },
+   "optDescriptionMacrosList_userId": {
+      "message": "User ID"
+   },
+   "optDescriptionMacrosList_userName": {
+      "message": "User name"
+   },
+   "optDescriptionMacrosList_weekday": {
+      "message": "Weekday"
+   },
+   "optSettings": {
+      "message": "Settings"
+   },
+   "optSettingsConflictAction": {
+      "message": "File conflicts action"
+   },
+   "optSettingsConflictActionOverwrite": {
+      "message": "Overwrite"
+   },
+   "optSettingsConflictActionPrompt": {
+      "message": "Prompt"
+   },
+   "optSettingsConflictActionUniquify": {
+      "message": "Save with other name"
+   },
+   "optSettingsConvertMode": {
+      "message": "Convert mode for illust"
+   },
+   "optSettingsConvertQuality": {
+      "message": "Convert quality for illust"
+   },
+   "optSettingsForceFilename": {
+      "message": "Ensure filename follows title (need restart)"
+   },
+   "optSettingsMultiFilename": {
+      "message": "Filename (multiple files)"
+   },
+   "optSettingsMultiSize": {
+      "message": "Image size (multiple illust)"
+   },
+   "optSettingsNovelFilename": {
+      "message": "Filename (novel)"
+   },
+   "optSettingsReset": {
+      "message": "Reset settings"
+   },
+   "optSettingsSingleFilename": {
+      "message": "Filename (single file)"
+   },
+   "optSettingsSingleSize": {
+      "message": "Image size (single illust)"
+   },
+   "optSettingsSizeOriginal": {
+      "message": "Original"
+   },
+   "optSettingsSizeRegular": {
+      "message": "Regular"
+   },
+   "optSettingsSizeSmall": {
+      "message": "Small"
+   },
+   "optSettingsUgoiraMode": {
+      "message": "Convert mode for Ugoira(Animations)"
+   },
+   "optSettingsUgoiraQuality": {
+      "message": "Convert quality for Ugoira(Animations)"
+   },
+   "optSettingsUgoiraSize": {
+      "message": "Image size (ugoira)"
+   },
+   "phConvert": {
+      "message": "Convert"
+   },
+   "phDone": {
+      "message": "Done"
+   },
+   "phDownload": {
+      "message": "Download"
+   },
+   "phFetch": {
+      "message": "Fetch"
+   },
+   "phLoad": {
+      "message": "Load"
+   },
+   "phProcess": {
+      "message": "Process"
+   },
+   "phRetry": {
+      "message": "Retry"
+   },
+   "weekdays": {
+      "message": "Sun,Mon,Tue,Wed,Thu,Fri,Sat"
+   }
+}

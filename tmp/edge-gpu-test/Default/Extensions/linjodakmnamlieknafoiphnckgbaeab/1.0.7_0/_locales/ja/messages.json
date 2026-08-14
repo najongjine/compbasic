@@ -1,0 +1,11 @@
+{
+   "description": {
+      "message": "マウスの右クリックとドラッグを可能にし、javascriptを簡単に消したりできます。"
+   },
+   "name": {
+      "message": "Pumpkin's Right Click Enable"
+   },
+   "short_name": {
+      "message": "Pumpkin's Right Click Enable"
+   }
+}

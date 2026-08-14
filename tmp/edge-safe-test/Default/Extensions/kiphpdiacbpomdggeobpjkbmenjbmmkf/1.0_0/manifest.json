@@ -1,0 +1,28 @@
+{
+   "action": {
+      "default_icon": {
+         "128": "images/icon128.png",
+         "16": "images/icon16.png",
+         "48": "images/icon48.png"
+      },
+      "default_popup": "popup.html"
+   },
+   "background": {
+      "service_worker": "background.js"
+   },
+   "content_scripts": [ {
+      "js": [ "content.js" ],
+      "matches": [ "https://novelai.net/image" ]
+   } ],
+   "icons": {
+      "128": "images/icon128.png",
+      "16": "images/icon16.png",
+      "48": "images/icon48.png"
+   },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAgzrkv7eSvJsbn0ftvrS8P7ahop3g+zVB4p1reVvVKsvYot4JRxr/AWhDZthnYvyLwek6VW4NbmxiSGpVqEDH0Zsd3f5swoCbC1lX/rrEtCjQNFEVrtRLU6ZHbNeVFQwfAaMEccpCRG0EZbbUr5V6Eg8yanNDjcvn5D5aDoy2HZQ0me087MsfPl5/Neg83Fj5LgGKP1fAXCTy5ucqwJ8vaf7d+V0AFJXu63XD7NqRuwRaRH5nPwcByQtOoYKaNChKWRKF/rmLIHC+7ZbZo1H/UQ1Iu2ef43/5HrNbt8VD3NzwfgNaEH5MAoIIfhmxbLnQv9s1T+IKl3vvneDESkH9zwIDAQAB",
+   "manifest_version": 3,
+   "name": "NovelAI Auto Button Clicker",
+   "permissions": [ "activeTab", "notifications", "storage" ],
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "1.0"
+}

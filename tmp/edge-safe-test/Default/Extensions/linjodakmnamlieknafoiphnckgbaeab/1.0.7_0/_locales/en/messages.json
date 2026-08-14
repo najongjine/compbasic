@@ -1,0 +1,11 @@
+{
+   "description": {
+      "message": "It allows you to right-click and drag the mouse, and makes it easy to turn the javascript off and on."
+   },
+   "name": {
+      "message": "Pumpkin's Right Click Enable"
+   },
+   "short_name": {
+      "message": "Pumpkin's Right Click Enable"
+   }
+}

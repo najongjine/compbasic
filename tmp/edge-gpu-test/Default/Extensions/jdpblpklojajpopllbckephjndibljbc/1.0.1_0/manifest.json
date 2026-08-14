@@ -1,0 +1,19 @@
+{
+   "content_scripts": [ {
+      "css": [ "badge.css" ],
+      "js": [ "content.js" ],
+      "matches": [ "*://*.twitch.tv/*" ]
+   } ],
+   "description": "Auto clicks the Channel Points bonus chest for you, so you can watch streams in peace.",
+   "icons": {
+      "128": "icon128.png",
+      "16": "icon16.png",
+      "48": "icon48.png"
+   },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAnSj3uJpMuMVqXP4JRkPAIFlvkDvzcHMZeIvifeDxWFUEgwgRlYibx16WxNESq5b+mo03vCOcHw/Vzo3iYsKVWm+l4q0gtWsQgqtIgyu9JHC5Xyqv+FmvX9E9JK/pyXneinnWQ/qX9tdC7dO+onZfyDdAG3b5UG+K8Y8B4kNgJpjjxDxnCZcm63i/JUtzHymCRjMJ7b3EF9IAhWH/uRooR6Q77/OD8qrwSDd2dz0/ppS1hAN6uzFEef2UrDIYQunkc9FpbfSh2Xj26rb+Uj3zeEqmYrR/mDUNOpWe1Ho5nWfelv4QUJlX6eJh5AvHPxi57w2a87OBgfxVSPcgmucx2QIDAQAB",
+   "manifest_version": 3,
+   "name": "Twitch Channel Points Auto Clicker",
+   "short_name": "TCPAC",
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "1.0.1"
+}

@@ -1,0 +1,41 @@
+{
+   "author": "rndomhack",
+   "background": {
+      "scripts": [ "lib/browser.js", "js/background.js" ]
+   },
+   "browser_action": {
+      "default_icon": {
+         "19": "icon/icon19.png",
+         "38": "icon/icon38.png"
+      },
+      "default_title": "Px Downloader"
+   },
+   "browser_specific_settings": {
+      "gecko": {
+         "id": "{a3650a89-273e-474b-9e32-46ba5397cf46}"
+      }
+   },
+   "content_scripts": [ {
+      "css": [ "css/content.css" ],
+      "js": [ "lib/browser.js", "lib/jszip.min.js", "lib/gif.js", "js/content.js" ],
+      "matches": [ "*://*.pixiv.net/*" ],
+      "run_at": "document_start"
+   } ],
+   "default_locale": "en",
+   "description": "__MSG_extDescription__",
+   "icons": {
+      "128": "icon/icon128.png",
+      "16": "icon/icon16.png",
+      "48": "icon/icon48.png"
+   },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAuhyRV/fEg6HQPdX/Gsk6VxLR2VFZ8ri9lrppVvD9CiJjEQocm0IDwYg76BAn8/hP4RycuA2M8EliPs86VeT07Q518hv94vIkL3bbCPsay5OJfwvCzMYrc1wzWJsVgTZ9CMRSZXDjAlyI/V1D+J+EucsEmZjfPHCA/c9m5bMh8TqUxROr8csYdZosrQUifbHqqhGtDgi6o0NRsAsPbP3/LuAw076NSnzRyiP7KOnvbgbi/0yqfAqmBA6aEx0lNPXrkRNCunO9SNd/4WX/p3tLixOHzkEdBkwDWg7rRj29nw1gfM6uIMfrvpFH8gAjUYFRiHnokxK09UWoKse+Z9K9nwIDAQAB",
+   "manifest_version": 2,
+   "name": "Px Downloader",
+   "options_ui": {
+      "chrome_style": true,
+      "page": "html/options.html"
+   },
+   "permissions": [ "storage", "downloads", "webRequest", "webRequestBlocking", "*://*.pixiv.net/", "*://*.pximg.net/", "*://*.techorus-cdn.com/" ],
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "3.5.0"
+}

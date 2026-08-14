@@ -1,0 +1,11 @@
+{
+   "description": {
+      "message": "마우스 우클릭과 드래그를 가능하게 해주고 javascript를 쉽게 껐다 킬 수 있게 해줍니다."
+   },
+   "name": {
+      "message": "Pumpkin's Right Click Enable"
+   },
+   "short_name": {
+      "message": "Pumpkin's Right Click Enable"
+   }
+}

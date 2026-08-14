@@ -1,0 +1,34 @@
+{
+   "action": {
+      "default_popup": "popup.html",
+      "default_title": "pumpkin's right click enable"
+   },
+   "background": {
+      "service_worker": "background.js",
+      "type": "module"
+   },
+   "content_scripts": [ {
+      "all_frames": true,
+      "js": [ "content-scripts/bu.js" ],
+      "matches": [ "http://*/*", "https://*/*" ]
+   }, {
+      "all_frames": true,
+      "js": [ "content-scripts/start.js" ],
+      "matches": [ "http://*/*", "https://*/*" ],
+      "run_at": "document_start"
+   } ],
+   "default_locale": "en",
+   "description": "__MSG_description__",
+   "host_permissions": [ "\u003Call_urls>" ],
+   "icons": {
+      "128": "icon/p_icon_128.png",
+      "16": "icon/p_icon_16.png",
+      "48": "icon/p_icon_48.png"
+   },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAgdIagFWsx2ErhLty7QZ1lVgLiBa9iD3u1DTc44HCQFB57AeHHQKr31oCcmZdM13VMtuuuhdQZlDeuknF/EvSXQT7UQzbX2v6sb9M6GeB3DTKUL60MrZktIaTfz+YrEu0phTmiB9zHXKl1oMH+/4dX1ZgBOTlgD3+KMyCld62kAO6mRDGOeau6FntWj7TrC7TMwDAnijYMXVO7VH06wxYY50vQG0qyUDDFKwbnz1DntXlXFS+bDHayukhdxtVrFUxRn2TFKO5EpJrXeQHf9bSrdnwMb89JhPNK6TZSSsI0KLruYUpaYjbArpzW6p3JBACxvCSizbZ87Q3hiRrb2vTFwIDAQAB",
+   "manifest_version": 3,
+   "name": "__MSG_name__",
+   "permissions": [ "tabs", "contentSettings", "storage", "contextMenus", "declarativeNetRequest" ],
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "1.0.7"
+}

@@ -1,6 +1,6 @@
 road runner ppt 만들어보기
 
-- vscode, github
+
 
 복습할거
 - 폴더 만들기, 이름 바꾸기, 이동하기
